@@ -1,6 +1,13 @@
 # nexusshop-ecommerce-demo
 Vanilla JavaScript, HTML ve CSS kullanılarak geliştirilmiş, modern ve responsive bir e-ticaret demo uygulaması. Arama, sepet, ürün detayları ve iletişim formu gibi özellikler içerir.
 
+# <a href="PROJENİN_GITHUB_LINKİ_BURAYA_GELECEK" target="_blank">NexusShop E-Commerce Demo</a>
+
+<!-- Proje Görseli -->
+<p align="center">
+  <img src="https://i.hizliresim.com/lq8m1k5.png" alt="NexusShop E-Commerce Demo Screenshot" width="800">
+</p>
+
 > Modern, responsive ve kullanıcı dostu bir alışveriş deneyimi sunan Vanilla JavaScript tabanlı e-ticaret uygulaması.
 
 Bu proje, modern web teknolojilerini kullanarak tam fonksiyonel, responsive ve estetik bir e-ticaret platformu geliştirme yeteneğimi sergilemek amacıyla oluşturulmuştur. Proje, "NexusShop" adlı modern bir marka konsepti etrafında şekillenmiş olup, kullanıcıların ürünleri aramasını, sepete eklemesini, detayları incelemesini ve hatta ürünler hakkında soru sormasını sağlayan zengin özellikler sunmaktadır.
@@ -55,7 +62,6 @@ Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
 
 Projenin dosya yapısı aşağıdaki gibidir:
 
-
 nexusshop-ecommerce-demo/
 ├── index.html # Ana HTML dosyası
 ├── style.css # Tüm stiller ve animasyonlar
@@ -99,6 +105,8 @@ Proje hakkında sorularınız, geri bildirimleriniz veya işbirliği tekliflerin
 -   **E-posta:** saractalhayusuf@gmail.com
 -   **LinkedIn:** www.linkedin.com/in/yusuf-talha-saraç-752445262
 
-)
-
 ---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/zafmgd">Yusuf Talha Saraç</a>
+</p>
