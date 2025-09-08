@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusShop | Modern Alışveriş</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- External CSS File -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container header-content">
+                <a href="#" class="logo">NexusShop</a>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Milyonlarca ürün arasından keşfet">
+                    <button class="search-button" aria-label="Ara">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button id="cart-button" class="cart-button" aria-label="Sepeti Aç">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="cart-count">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content container">
+            <div class="controls">
+                <h1>Sana Özel Seçkiler</h1>
+                <div class="sort-controls">
+                    <label for="sort-select">Sırala:</label>
+                    <select id="sort-select">
+                        <option value="default">Varsayılan</option>
+                        <option value="price-asc">En Düşük Fiyat</option>
+                        <option value="price-desc">En Yüksek Fiyat</option>
+                        <option value="name-asc">İsme Göre (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="product-list" class="product-list">
+                <!-- Products will be dynamically loaded here -->
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i> Yükleniyor...
+                </div>
+            </div>
+        </main>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Bize Ulaşın</h2>
+                <p class="section-subtitle">Sorularınız, önerileriniz veya işbirliği teklifleriniz için bizimle iletişime geçin.</p>
+                <form id="general-contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Adınız Soyadınız</label>
+                        <input type="text" id="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">E-posta Adresiniz</label>
+                        <input type="email" id="contact-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Konu</label>
+                        <input type="text" id="contact-subject" placeholder="Genel Soru, İşbirliği vb." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Mesajınız</label>
+                        <textarea id="contact-message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Mesajı Gönder</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 NexusShop. Tüm hakları saklıdır.</p>
+            </div>
+        </footer>
+
+        <!-- Shopping Cart Sidebar -->
+        <div id="cart-overlay" class="cart-overlay">
+            <div id="cart" class="cart">
+                <div class="cart-header">
+                    <h2>Sepetim</h2>
+                    <button id="close-cart" class="close-button" title="Sepeti Kapat" aria-label="Sepeti Kapat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="cart-items" class="cart-items">
+                    <p class="empty-cart-message">Sepetiniz henüz boş.</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-summary">
+                        <div class="cart-subtotal">
+                            <span>Ara Toplam:</span>
+                            <span id="cart-subtotal-price">₺0.00</span>
+                        </div>
+                        <div class="cart-shipping">
+                            <span>Kargo:</span>
+                            <span class="free-shipping">Bedava</span>
+                        </div>
+                    </div>
+                    <div class="cart-total">
+                        <span>Genel Toplam:</span>
+                        <span id="cart-total-price">₺0.00</span>
+                    </div>
+                    <button id="checkout-button" class="checkout-button">Alışverişi Tamamla</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div id="product-detail-modal-overlay" class="modal-overlay">
+            <div id="product-detail-modal" class="modal product-detail-modal">
+                <div class="modal-header">
+                    <h2 id="product-detail-title">Ürün Adı</h2>
+                    <button id="close-product-detail-modal" class="close-button" title="Kapat" aria-label="Ürün Detayını Kapat">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="product-detail-content">
+                        <img id="product-detail-image" src="" alt="" class="product-detail-image">
+                        <div class="product-detail-info">
+                            <p id="product-detail-description" class="product-detail-description">Ürün açıklaması burada yer alacak.</p>
+                            <p id="product-detail-price" class="product-detail-price">₺0.00</p>
+                            <button id="add-to-cart-from-detail" class="add-to-cart-btn">Sepete Ekle</button>
+                        </div>
+                    </div>
+                    
+                    <div class="question-form-section">
+                        <h3>Bu Ürün Hakkında Soru Sor</h3>
+                        <form id="product-question-form" class="question-form">
+                            <div class="form-group">
+                                <label for="question-name">Adınız</label>
+                                <input type="text" id="question-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="question-email">E-posta</label>
+                                <input type="email" id="question-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="question-text">Sorunuz</label>
+                                <textarea id="question-text" rows="4" placeholder="Ürünle ilgili merak ettiklerinizi yazın..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-button">Soruyu Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Modal -->
+        <div id="payment-modal-overlay" class="modal-overlay">
+            <div id="payment-modal" class="modal">
+                <div class="modal-header">
+                    <h2>Ödemeyi Tamamla</h2>
+                    <button id="close-payment-modal" class="close-button" title="Ödemeyi İptal Et" aria-label="Ödemeyi İptal Et">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label for="card-name">Kart Sahibi</label>
+                            <input type="text" id="card-name" placeholder="Adınız Soyadınız" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Kart Numarası</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry-date">Son Kullanma</label>
+                                <input type="text" id="expiry-date" placeholder="AA/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV/CVC</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancel-payment" class="cancel-button">Vazgeç</button>
+                    <button id="confirm-payment" class="confirm-button">Öde</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- External JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
